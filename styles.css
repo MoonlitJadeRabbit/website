@@ -1,10 +1,12 @@
 @font-face {
+  /* Custom bold display font used for headings, similar to the reference site */
   font-family: "IndustryBlack";
   src: url("IndustryBold.otf") format("opentype");
   font-display: swap;
 }
 
 :root {
+  /* Main color variables used across the page */
   --bg: #09090b;
   --panel: #111114;
   --panel-hover: #18181b;
@@ -22,10 +24,12 @@
 }
 
 html {
+  /* Enables smooth scrolling when clicking anchor links */
   scroll-behavior: smooth;
 }
 
 body {
+  /* Global page styles */
   margin: 0;
   background: var(--bg);
   color: var(--text);
@@ -45,6 +49,7 @@ textarea {
 }
 
 .container {
+  /* Keeps the site centered and limits the maximum content width */
   width: 1100px;
   max-width: 100%;
   margin: 0 auto;
@@ -52,10 +57,12 @@ textarea {
 }
 
 .hero {
+  /* Spacing below the introduction section */
   margin-bottom: 4rem;
 }
 
 .heading-container {
+  /* Two-column layout: identity on the left, social icons on the right */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
@@ -63,6 +70,7 @@ textarea {
 }
 
 .identity {
+  /* Aligns the profile image and the name text */
   display: inline-flex;
   align-items: center;
   gap: 1rem;
@@ -70,6 +78,7 @@ textarea {
 }
 
 .avatar-image {
+  /* Profile picture beside the name */
   width: 3rem;
   height: 3rem;
   border: 1px solid #27272a;
@@ -89,6 +98,7 @@ textarea {
 }
 
 .tagline {
+  /* Short line directly under the top identity row */
   margin: 1.4rem 0 0;
   color: var(--muted);
   font-size: 1.15rem;
@@ -96,6 +106,7 @@ textarea {
 }
 
 .intro-copy {
+  /* Paragraph text used in the intro section */
   max-width: 70rem;
   margin: 1rem 0 0;
   color: var(--muted);
@@ -110,6 +121,7 @@ textarea {
 }
 
 .social-links {
+  /* Holds the social icon buttons in a row */
   display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;
@@ -117,6 +129,7 @@ textarea {
 }
 
 .social-link {
+  /* Single social button styled to match your screenshot */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -139,6 +152,7 @@ textarea {
 }
 
 .social-link svg {
+  /* Makes all social icons the same size and color */
   width: 1.2rem;
   height: 1.2rem;
   fill: none;
@@ -166,12 +180,14 @@ textarea {
 
 .category,
 .contact-section {
+  /* Shared spacing for each large section */
   margin-bottom: 2.2rem;
 }
 
 .section-title,
 .project-title,
 .submit-button {
+  /* Bold display font for major headings and buttons */
   font-family: "IndustryBlack", sans-serif;
 }
 
@@ -183,27 +199,32 @@ textarea {
 }
 
 .projects-grid {
+  /* Default 3-column project layout */
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
 .projects-grid-two {
+  /* Used for the final section that only has 2 cards */
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .project-card {
+  /* Outer card shell for each project */
   border: 2px solid #18181b;
   background: var(--bg);
 }
 
 .card-image-wrapper {
+  /* Image container so the placeholder art stays clipped correctly */
   position: relative;
   width: 100%;
   overflow: hidden;
 }
 
 .project-image {
+  /* Visual thumbnail area at the top of each project card */
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -239,6 +260,7 @@ textarea {
 }
 
 .thumb-label {
+  /* Small label shown on each placeholder thumbnail */
   position: relative;
   z-index: 1;
   display: inline-flex;
@@ -320,6 +342,7 @@ textarea {
 }
 
 .project-body {
+  /* Text area below each thumbnail */
   padding: 1.25rem;
 }
 
@@ -339,6 +362,7 @@ textarea {
 }
 
 .read-more {
+  /* Button-style link used at the bottom of each project card */
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
@@ -363,6 +387,7 @@ textarea {
 }
 
 .contact-wrap {
+  /* Centers and narrows the contact section */
   max-width: 48rem;
   margin: 0 auto;
   padding: 2rem 0;
@@ -373,6 +398,7 @@ textarea {
 }
 
 .contact-form {
+  /* Extra spacing above the contact form fields */
   padding: 1.25rem 0 0;
 }
 
@@ -389,6 +415,7 @@ textarea {
 
 .form-field input,
 .form-field textarea {
+  /* Shared input styles for email + message fields */
   width: 100%;
   padding: 0.8rem;
   border: 1px solid var(--line);
@@ -408,6 +435,7 @@ textarea {
 }
 
 .submit-button {
+  /* Main form button */
   margin-top: 1.75rem;
   padding: 0.78rem 1.1rem;
   border: 0;
@@ -428,6 +456,7 @@ textarea {
 }
 
 .footer-socials {
+  /* Centers the second row of social icons at the bottom */
   display: flex;
   justify-content: center;
   margin-bottom: 4rem;
@@ -444,6 +473,7 @@ textarea {
 }
 
 @media (max-width: 767px) {
+  /* Mobile layout changes */
   .heading-container {
     grid-template-columns: 1fr;
   }
