@@ -1559,8 +1559,24 @@ body.lightbox-open {
   padding: 0;
 }
 
-.portfolio-page .reference-gallery-media img {
+.portfolio-page .reference-gallery-media img,
+.portfolio-page .reference-gallery-media video {
   max-height: min(70vh, 520px);
+}
+
+.reference-gallery-media--video {
+  padding: 0;
+  min-height: 0;
+  max-height: none;
+  background: #0a0a0c;
+}
+
+.reference-gallery-media--video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(70vh, 520px);
+  background: #000;
 }
 
 .portfolio-page .ctmf-card {
