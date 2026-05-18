@@ -6,8 +6,6 @@ Static portfolio hosted on **GitHub Pages**.
 
 After deployment: **https://moonlitjaderabbit.github.io/website/**
 
-To use **junyezhou.com**, add the domain under the repo’s **Settings → Pages → Custom domain**, then at your registrar point DNS to GitHub Pages (A/CNAME records shown there).
-
 ## Local preview
 
 Open `index.html` in a browser, or:
