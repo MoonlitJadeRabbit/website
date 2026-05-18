@@ -1,0 +1,13 @@
+# Local dev helpers (not served)
+scripts/
+
+# PDF text extracts used while writing (not linked on the site)
+assets/**/*.txt
+
+# Unused source photos
+*.HEIC
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
