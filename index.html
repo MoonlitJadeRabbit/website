@@ -452,23 +452,10 @@
             Send a message below, or email me at
             <a href="mailto:junye.zhou@mail.utoronto.ca"
               >junye.zhou@mail.utoronto.ca</a
-            >. You will return here after sending.
+            >.
           </p>
 
-          <form
-            id="my-form"
-            class="contact-form"
-            action="https://formsubmit.co/junye.zhou@mail.utoronto.ca"
-            method="POST"
-          >
-            <input
-              type="hidden"
-              name="_subject"
-              value="New message from Junye portfolio"
-            />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" id="form-next-url" value="" />
+          <form id="my-form" class="contact-form" method="post">
             <p class="form-honey" aria-hidden="true">
               <label
                 >Leave this empty<input
@@ -500,9 +487,16 @@
               ></textarea>
             </div>
 
-            <button id="my-form-button" type="submit" class="submit-button">
-              Send message
-            </button>
+            <div class="contact-actions">
+              <button id="my-form-button" type="submit" class="submit-button">
+                Send message
+              </button>
+              <a
+                class="contact-mailto-link"
+                href="mailto:junye.zhou@mail.utoronto.ca?subject=Message%20from%20portfolio"
+                >Email me directly</a
+              >
+            </div>
             <p
               id="my-form-status"
               class="form-status"
@@ -581,6 +575,7 @@
       </section>
     </main>
 
-    <script src="script.js?v=6"></script>
+    <script src="contact-config.js"></script>
+    <script src="script.js?v=7"></script>
   </body>
 </html>

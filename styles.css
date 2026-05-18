@@ -654,6 +654,29 @@ textarea {
   cursor: wait;
 }
 
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.25rem;
+  margin-top: 1.75rem;
+}
+
+.contact-actions .submit-button {
+  margin-top: 0;
+}
+
+.contact-mailto-link {
+  color: var(--soft);
+  font-size: 0.92rem;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.contact-mailto-link:hover {
+  color: var(--text);
+}
+
 .form-status {
   min-height: 1.5rem;
   margin: 0.8rem 0 0;
