@@ -594,12 +594,7 @@ textarea {
 }
 
 .form-honey {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
+  display: none !important;
 }
 
 .contact-form {
@@ -665,12 +660,18 @@ textarea {
   color: var(--muted);
 }
 
+.form-status.is-sending {
+  color: var(--soft);
+}
+
 .form-status.is-success {
   color: #86efac;
+  font-weight: 600;
 }
 
 .form-status.is-error {
   color: #fca5a5;
+  font-weight: 600;
 }
 
 .footer-socials {

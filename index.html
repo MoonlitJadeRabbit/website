@@ -468,14 +468,16 @@
             />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
-            <input
-              type="text"
-              name="_honey"
-              class="form-honey"
-              tabindex="-1"
-              autocomplete="off"
-              aria-hidden="true"
-            />
+            <input type="hidden" name="_next" id="form-next-url" value="" />
+            <p class="form-honey" aria-hidden="true">
+              <label
+                >Leave this empty<input
+                  type="text"
+                  name="_honey"
+                  tabindex="-1"
+                  autocomplete="off"
+              /></label>
+            </p>
             <div class="form-field">
               <label for="email">Your email</label>
               <input
@@ -579,6 +581,6 @@
       </section>
     </main>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=5"></script>
   </body>
 </html>
