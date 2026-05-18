@@ -125,14 +125,7 @@
 
       frame.append(prevButton, viewport, nextButton);
 
-      const hasVideo = viewport.querySelector("video");
-      const hint = document.createElement("p");
-      hint.className = "reference-gallery-hint";
-      hint.textContent = hasVideo
-        ? "Arrow keys switch clips when the gallery is focused."
-        : "Arrow keys work when the gallery is focused. Click an image to zoom.";
-
-      gallery.append(toolbar, frame, hint);
+      gallery.append(toolbar, frame);
       grid.replaceWith(gallery);
     });
   }
