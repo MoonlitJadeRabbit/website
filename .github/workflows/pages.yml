@@ -19,6 +19,9 @@ jobs:
         with:
           lfs: true
 
+      - name: Pull Git LFS objects
+        run: git lfs pull
+
       - name: Deploy static files to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
