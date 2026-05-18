@@ -61,18 +61,21 @@
         </p>
 
         <figure class="portfolio-figure video-figure">
-          <div class="video-wrapper">
-            <video controls playsinline preload="metadata">
-              <source
-                src="assets/phy180-pendulum/pendulum-demo.mp4"
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
+          <div class="video-wrapper gif-wrapper">
+            <img
+              class="scroll-gif"
+              src="assets/phy180-pendulum/pendulum-demo-poster.jpg"
+              data-gif="assets/phy180-pendulum/pendulum-demo.gif"
+              data-poster="assets/phy180-pendulum/pendulum-demo-poster.jpg"
+              alt="Damped pendulum oscillating"
+              width="1280"
+              height="720"
+              loading="lazy"
+            />
           </div>
           <figcaption>
-            Damped oscillation clip (iPhone, 60&nbsp;fps) — cropped and tracked
-            frame-by-frame for the amplitude and length studies.
+            Damped oscillation clip (iPhone, 60&nbsp;fps) — loops when you scroll
+            to it; full video used for Tracker analysis.
           </figcaption>
         </figure>
 
@@ -221,5 +224,6 @@
     </main>
 
     <script src="image-lightbox.js"></script>
+    <script src="scroll-gif.js"></script>
   </body>
 </html>

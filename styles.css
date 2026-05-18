@@ -827,6 +827,19 @@ textarea {
   background: #000;
 }
 
+.gif-wrapper {
+  padding-bottom: 0;
+  height: auto;
+}
+
+.gif-wrapper .scroll-gif {
+  position: static;
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #000;
+}
+
 .portfolio-figure-media {
   display: flex;
   align-items: center;
