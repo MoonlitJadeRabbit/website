@@ -448,15 +448,41 @@
         <div class="contact-wrap">
           <h2 class="section-title contact-title">Contact Me</h2>
 
-          <!-- Simple contact form -->
-          <form id="my-form" class="contact-form">
+          <p class="contact-lead">
+            Send a message below, or email me at
+            <a href="mailto:junye.zhou@mail.utoronto.ca"
+              >junye.zhou@mail.utoronto.ca</a
+            >.
+          </p>
+
+          <form
+            id="my-form"
+            class="contact-form"
+            action="https://formsubmit.co/junye.zhou@mail.utoronto.ca"
+            method="POST"
+          >
+            <input
+              type="hidden"
+              name="_subject"
+              value="New message from Junye portfolio"
+            />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input
+              type="text"
+              name="_honey"
+              class="form-honey"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
             <div class="form-field">
               <label for="email">Your email</label>
               <input
                 type="email"
                 name="email"
                 id="email"
-                placeholder="name@gmail.com"
+                placeholder="you@example.com"
                 required
               />
             </div>
@@ -467,7 +493,7 @@
                 name="message"
                 id="message"
                 rows="6"
-                placeholder="Leave a comment..."
+                placeholder="What would you like to say?"
                 required
               ></textarea>
             </div>
@@ -475,7 +501,12 @@
             <button id="my-form-button" type="submit" class="submit-button">
               Send message
             </button>
-            <p id="my-form-status" class="form-status"></p>
+            <p
+              id="my-form-status"
+              class="form-status"
+              role="status"
+              aria-live="polite"
+            ></p>
           </form>
         </div>
 
