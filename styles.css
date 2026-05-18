@@ -827,9 +827,15 @@ textarea {
   background: #000;
 }
 
-.gif-wrapper {
+.video-figure:has(.gif-wrapper) {
+  height: auto;
+}
+
+.video-wrapper.gif-wrapper {
+  flex: 0 0 auto;
   padding-bottom: 0;
   height: auto;
+  min-height: 0;
 }
 
 .gif-wrapper .scroll-gif {
@@ -837,7 +843,9 @@ textarea {
   display: block;
   width: 100%;
   height: auto;
-  background: #000;
+  margin: 0;
+  max-height: none;
+  background: #0a0a0c;
 }
 
 .portfolio-figure-media {
