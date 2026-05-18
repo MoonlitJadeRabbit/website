@@ -741,21 +741,21 @@
         </div>
 
         <figure class="portfolio-figure video-figure">
-          <div class="video-wrapper">
-            <video controls playsinline preload="metadata">
-              <source
-                src="assets/praxis-i-design/bed-dome-pov-demo.mp4"
-                type="video/mp4"
-              />
-              <source
-                src="assets/praxis-i-design/bed-dome-pov-demo.mov"
-                type="video/quicktime"
-              />
-            </video>
+          <div class="video-wrapper gif-wrapper">
+            <img
+              class="scroll-gif"
+              src="assets/praxis-i-design/bed-dome-pov-demo-poster.jpg"
+              data-gif="assets/praxis-i-design/bed-dome-pov-demo.gif"
+              data-poster="assets/praxis-i-design/bed-dome-pov-demo-poster.jpg"
+              alt="Bed dome prototype from the sleeper's point of view"
+              width="400"
+              height="711"
+              loading="lazy"
+            />
           </div>
           <figcaption>
             Bed dome functional prototype from the <strong>sleeper’s POV</strong>
-            (blanket stand-in).
+            (blanket stand-in) — loops when you scroll to it.
           </figcaption>
         </figure>
 
@@ -985,5 +985,6 @@
 
     <script src="reference-gallery.js"></script>
     <script src="image-lightbox.js"></script>
+    <script src="scroll-gif.js"></script>
   </body>
 </html>
