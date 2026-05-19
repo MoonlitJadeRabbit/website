@@ -106,25 +106,23 @@ git push -u origin main
 
 After that, use **Push** / **Pull** only.
 
-### Cursor auto-sync hooks (no auto-commit)
+### Cursor auto-pull hook
 
-Project hooks in `.cursor/hooks/` keep GitHub in sync while you use the agent:
+Project hooks in `.cursor/hooks/` pull from GitHub when you use the agent:
 
 | When | What runs |
 |------|-----------|
 | Chat starts / you send a message | **Pull** from `origin` (throttled to once per 60s) |
-| Agent finishes a turn | **Push** only if you already **committed** locally (no auto-commit) |
 
-**Safeguards:** fails open (Git errors do not block chat); pull before push; skips push if you have uncommitted edits or merge conflicts; push throttled to once per 2 minutes.
-
-**You still commit manually** when you want a real message:
+**Push and commit are always manual:**
 
 ```powershell
 git add -A
 git commit -m "Describe your change"
+git push origin main
 ```
 
-After that, the next agent **stop** hook can push for you—or run `git push origin main` yourself.
+**Safeguards:** fails open (Git errors do not block chat); merge conflicts are logged and left for you to fix.
 
 Logs: `.cursor/hooks/git-sync.log` (not committed). **Restart Cursor** after pulling hook files on a new PC.
 

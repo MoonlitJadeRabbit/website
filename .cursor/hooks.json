@@ -11,11 +11,6 @@
         "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .cursor/hooks/git-pull.ps1",
         "matcher": ".*"
       }
-    ],
-    "stop": [
-      {
-        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .cursor/hooks/git-push.ps1"
-      }
     ]
   }
 }
