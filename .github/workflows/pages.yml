@@ -1,0 +1,31 @@
+# Builds a gh-pages branch on each push. Enable Pages once:
+# Repo Settings → Pages → Build: Deploy from branch → gh-pages → / (root)
+name: Publish site to gh-pages branch
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (with LFS media)
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Pull Git LFS objects
+        run: git lfs pull
+
+      - name: Deploy static files to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: .
+          exclude_assets: .github
