@@ -106,4 +106,26 @@ git push -u origin main
 
 After that, use **Push** / **Pull** only.
 
+### Cursor auto-sync hooks (no auto-commit)
+
+Project hooks in `.cursor/hooks/` keep GitHub in sync while you use the agent:
+
+| When | What runs |
+|------|-----------|
+| Chat starts / you send a message | **Pull** from `origin` (throttled to once per 60s) |
+| Agent finishes a turn | **Push** only if you already **committed** locally (no auto-commit) |
+
+**Safeguards:** fails open (Git errors do not block chat); pull before push; skips push if you have uncommitted edits or merge conflicts; push throttled to once per 2 minutes.
+
+**You still commit manually** when you want a real message:
+
+```powershell
+git add -A
+git commit -m "Describe your change"
+```
+
+After that, the next agent **stop** hook can push for you—or run `git push origin main` yourself.
+
+Logs: `.cursor/hooks/git-sync.log` (not committed). **Restart Cursor** after pulling hook files on a new PC.
+
 > **Note:** The Desktop shortcut `Junye Website` on this PC only links to the local folder here. It does not sync to your other computer by itself; GitHub does.
