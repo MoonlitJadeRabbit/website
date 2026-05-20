@@ -67,6 +67,8 @@ GitHub holds the shared copy. **Push** when you finish on one PC; **pull** befor
 | Before editing (get changes from the other PC) | `.\scripts\sync-github.ps1 -Action Pull` |
 | Check if you are ahead/behind | `.\scripts\sync-github.ps1 -Action Status` |
 
+**Cursor auto-pull (optional):** With `.cursor/hooks.json` enabled, Cursor pulls from GitHub before you message the agent. Restart Cursor after pulling hook updates. Commit and push manually (or ask the agent) when you are ready.
+
 ### One-time setup on each computer
 
 1. Install [Git for Windows](https://git-scm.com/download/win) (or `winget install Git.Git`).

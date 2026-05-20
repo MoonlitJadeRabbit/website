@@ -1,5 +1,7 @@
 # Local dev helpers (not served)
 scripts/
+.cursor/hooks/.last-pull
+
 
 # PHY180 lab folder: keep scripts on GitHub; skip huge raw media/data
 PHY180 assets/**/*.MOV
