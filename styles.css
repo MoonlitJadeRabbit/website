@@ -905,7 +905,8 @@ textarea {
   min-height: 0;
 }
 
-.gif-wrapper .scroll-gif {
+.gif-wrapper .scroll-gif,
+.gif-wrapper video {
   position: static;
   display: block;
   width: 100%;
