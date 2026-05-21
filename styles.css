@@ -391,7 +391,14 @@ textarea {
   text-underline-offset: 3px;
 }
 
-.project-body p {
+.project-subtitle {
+  margin: 0.35rem 0 0;
+  color: var(--soft);
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+}
+
+.project-body > p:not(.project-subtitle) {
   margin: 1rem 0 0;
   color: var(--muted);
 }
