@@ -391,6 +391,10 @@ textarea {
   text-underline-offset: 3px;
 }
 
+.project-title-static {
+  text-decoration: none;
+}
+
 .project-subtitle {
   margin: 0.35rem 0 0;
   color: var(--soft);
