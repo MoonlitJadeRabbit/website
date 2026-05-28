@@ -3,6 +3,9 @@ scripts/
 .cursor/hooks/.last-pull
 
 
+# Unused PHY180 source video (site uses pendulum-demo.gif); was Git LFS
+assets/phy180-pendulum/pendulum-demo.mov
+
 # PHY180 lab folder: keep scripts on GitHub; skip huge raw media/data
 PHY180 assets/**/*.MOV
 PHY180 assets/**/*.mov

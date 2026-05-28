@@ -14,13 +14,8 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout (with LFS media)
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          lfs: true
-
-      - name: Pull Git LFS objects
-        run: git lfs pull
 
       - name: Deploy static files to gh-pages
         uses: peaceiris/actions-gh-pages@v4
