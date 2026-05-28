@@ -127,6 +127,157 @@
         </p>
       </section>
 
+      <section class="project-copy" id="telegram-tools">
+        <h2 class="project-section-title">Other Telegram bots I used</h2>
+
+        <p>
+          Besides writing my own bot in Python, setup relied on a few official and
+          third-party Telegram bots. None of them store my videos — they only helped
+          with credentials and IDs.
+        </p>
+
+        <h3 class="project-subsection-title">@BotFather</h3>
+        <p>
+          <strong>What it is:</strong> Telegram’s official bot for creating and managing bots.
+        </p>
+        <p>
+          <strong>How I used it:</strong>
+        </p>
+        <ul>
+          <li><code>/newbot</code> — create the bot and get the <code>BOT_TOKEN</code> for <code>.env</code></li>
+          <li><code>/mybots</code> — open bot settings, revoke/regenerate the token if it leaks</li>
+          <li>Add the bot as an <strong>admin</strong> of my private archive channel (must be allowed to post)</li>
+        </ul>
+        <p>
+          BotFather only manages the bot account. It does <em>not</em> give you channel IDs or
+          archive videos for you.
+        </p>
+
+        <h3 class="project-subsection-title">@raw_data_bot (Raw Data Bot)</h3>
+        <p>
+          <strong>What it is:</strong> A utility bot that replies with the raw JSON Telegram
+          sends about a message or chat — useful for debugging and for copying numeric IDs.
+        </p>
+        <p>
+          <strong>How I used it:</strong> After adding it to my <strong>private archive channel</strong>,
+          it printed the channel’s chat id in the <code>-100…</code> format. That value goes in
+          <code>ARCHIVE_CHANNEL_ID</code> in <code>.env</code>. This was more reliable for channels
+          than forwarding a message to a generic “get id” bot.
+        </p>
+
+        <h3 class="project-subsection-title">@userinfobot</h3>
+        <p>
+          <strong>What it is:</strong> Shows your Telegram user id and basic info when you
+          forward a message or start a chat.
+        </p>
+        <p>
+          <strong>How I used it:</strong> To find my own <code>OWNER_USER_ID</code> (optional
+          in <code>.env</code> so only I can use the bot). Important distinction: a
+          <strong>user id</strong> is a positive number like <code>5856941941</code>; a
+          <strong>channel id</strong> is negative and usually starts with <code>-100</code>.
+          I initially confused the two — userinfobot is for people, not channels.
+        </p>
+
+        <h3 class="project-subsection-title">@getidsbot (optional)</h3>
+        <p>
+          Same job as raw_data_bot for some setups: add it to a group or channel, and it
+          reports chat ids. I mention it because tutorials often recommend it; I ended up
+          preferring raw_data_bot for the archive channel.
+        </p>
+      </section>
+
+      <section class="project-copy" id="instructions">
+        <h2 class="project-section-title">How to activate and use the bot</h2>
+
+        <p>
+          These steps match how the project is meant to run on Windows (local machine).
+          For 24/7 uptime, run the same code on a PC that stays on, or move it to a VPS later.
+        </p>
+
+        <h3 class="project-subsection-title">1 — Create the bot (Telegram)</h3>
+        <ol>
+          <li>Open <strong>@BotFather</strong> → <code>/newbot</code> → copy the token.</li>
+          <li>Create a <strong>private channel</strong> (your archive storage).</li>
+          <li>Add your bot to that channel as <strong>Administrator</strong> with permission to post messages.</li>
+          <li>Add <strong>@raw_data_bot</strong> to the channel briefly; copy the channel id (<code>-100…</code>).</li>
+          <li>Optional: message <strong>@userinfobot</strong> to get your user id for <code>OWNER_USER_ID</code>.</li>
+        </ol>
+
+        <!-- IMAGE: BotFather + channel admin setup -->
+        <figure class="portfolio-figure media-placeholder">
+          <div class="project-image thumb-07" style="min-height: 10rem; border-radius: 0.5rem">
+            <span class="thumb-label">Setup placeholder</span>
+          </div>
+          <figcaption>
+            [Insert screenshot: BotFather token screen and bot added as channel admin]
+          </figcaption>
+        </figure>
+
+        <h3 class="project-subsection-title">2 — Configure the project</h3>
+        <p>In the project folder, copy <code>.env.example</code> to <code>.env</code> and set:</p>
+        <div class="code-snippet">
+          <pre>BOT_TOKEN=your_token_from_botfather
+ARCHIVE_CHANNEL_ID=-100xxxxxxxxxx
+OWNER_USER_ID=your_numeric_user_id
+SQLITE_PATH=data/bot.sqlite3</pre>
+        </div>
+        <p>
+          Never commit <code>.env</code> or paste the token in chat. If it leaks, revoke it in BotFather.
+        </p>
+
+        <h3 class="project-subsection-title">3 — Install and start</h3>
+        <div class="code-snippet">
+          <pre>cd videodownloadbot
+py -m venv .venv
+.\.venv\Scripts\pip install -r requirements.txt
+# Or double-click start_bot.bat on Windows</pre>
+        </div>
+        <p>
+          Leave the terminal window open while the bot runs. Use <code>stop_bot.bat</code> or
+          close the window to stop it. If you see “conflict” errors, only one instance should
+          be running — run <code>taskkill /IM python.exe /F</code> once, then start again.
+        </p>
+
+        <h3 class="project-subsection-title">4 — Daily usage</h3>
+        <ul>
+          <li>
+            <strong>Save a video:</strong> Open your bot in DM → forward (or send) a video.
+            Wait for “Saved as <code>#id</code>” → tap a category on the inline keyboard.
+          </li>
+          <li>
+            <strong>Batch forwards:</strong> Forward many videos one after another; after a
+            short pause you get <em>one</em> picker for the whole batch.
+          </li>
+          <li>
+            <strong>Album / media group:</strong> Forward an album; the bot saves a
+            <strong>collection</strong> and asks for a category once.
+          </li>
+          <li>
+            <strong>Skip → Uncategorized:</strong> Keep the save, label as <code>uncategorized</code>.
+          </li>
+          <li>
+            <strong>Cancel · Don't save:</strong> Remove that upload from the archive and database.
+          </li>
+        </ul>
+
+        <h3 class="project-subsection-title">5 — Commands</h3>
+        <div class="code-snippet">
+          <pre>/start, /help     — intro and command list
+/videos            — browse by category (paginated)
+/search &lt;text&gt;    — search captions, tags, categories
+/move &lt;id&gt;        — change category (e.g. /move 12 zw)
+/tag &lt;id&gt; …       — set category + extra tags
+/collection &lt;id&gt;  — open an album collection
+/delete &lt;id&gt;      — remove from archive + database
+/stats             — count and storage summary</pre>
+        </div>
+
+        <p>
+          Protected or expired forwards may fail to copy; download the file to your phone
+          and <strong>send it as a file</strong> to the bot instead of forwarding.
+        </p>
+      </section>
+
       <section class="project-copy" id="cursor-prompts">
         <h2 class="project-section-title">Essential Cursor AI prompts</h2>
 
