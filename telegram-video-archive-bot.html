@@ -132,8 +132,8 @@
 
         <p>
           Below are real prompts I used (lightly trimmed for length). This is the actual
-          workflow: one big spec to bootstrap, then smaller messages when I hit bugs or
-          wanted UX changes.
+          workflow: one big spec to bootstrap, then shorter “add this feature” messages
+          when I wanted new behaviour or UI.
         </p>
 
         <h3 class="project-subsection-title">1 — Bootstrap the whole bot</h3>
@@ -150,22 +150,25 @@ Use Python and aiogram. Project folder: videodownloadbot.</pre>
           migrations, and the first working forward-to-save loop from this single message.
         </p>
 
-        <h3 class="project-subsection-title">2 — Bulk forward: some videos stay uncategorized</h3>
+        <h3 class="project-subsection-title">2 — Add bulk category assignment</h3>
         <div class="code-snippet">
-          <pre>When I forward a lot of files and pick a category for the batch, most of
-them get categorized but a few stay uncategorized. Fix it.</pre>
+          <pre>Add a bulk_upload_id column on each saved video. When I forward many
+videos in a row, debounce them into one batch and show a single category picker.
+When I pick a category, run UPDATE videos SET primary_category = ? WHERE
+bulk_upload_id = ? so every video in that batch gets the same label, including
+ones that finish saving late.</pre>
         </div>
         <p>
-          Led to <code>bulk_upload_id</code> in SQLite, in-flight save tracking, and
-          assigning categories with <code>UPDATE … WHERE bulk_upload_id = ?</code> instead
-          of a fragile in-memory list.
+          Cursor added <code>bulk_upload_id</code>, in-flight save tracking, and the
+          SQL-based batch update instead of a fragile in-memory id list.
         </p>
 
-        <h3 class="project-subsection-title">3 — Cancel should not save to the archive</h3>
+        <h3 class="project-subsection-title">3 — Add Cancel and Skip on the category picker</h3>
         <div class="code-snippet">
-          <pre>After forwarding, add Cancel below Skip. Cancel should ignore the forward —
-don't categorize it and don't save it to the video archive. Skip should explicitly
-go to uncategorized.</pre>
+          <pre>Add two buttons below the category list on the picker after a forward:
+"Skip → Uncategorized" (save and set primary_category to uncategorized) and
+"Cancel · Don't save" (delete the archive message and DB row — treat the forward
+as ignored). For /move, Cancel should only abort the move, not delete videos.</pre>
         </div>
         <p>
           Cancel on new uploads deletes the archive channel message and DB row; Skip keeps
@@ -173,35 +176,31 @@ go to uncategorized.</pre>
           the move (no delete).
         </p>
 
-        <h3 class="project-subsection-title">4 — /videos pagination UI</h3>
+        <h3 class="project-subsection-title">4 — Add paginated /videos browser</h3>
         <div class="code-snippet">
-          <pre>For /videos, replace Prev/Next with numbered page buttons in one compact
-row (like ⏪ 1 2 3 4 5 ⏩). Keep each video link on its own row going down.</pre>
-        </div>
-        <p>
-          Also added preview albums per page and duplicate page controls under each grid
-          so I do not scroll back to the top to change pages.
-        </p>
-
-        <h3 class="project-subsection-title">5 — Category picker order</h3>
-        <div class="code-snippet">
-          <pre>When moving or assigning a video to a category, sort the category buttons
-so the category with the most videos appears first.</pre>
+          <pre>Add a /videos command with inline keyboards: categories first, then a
+paginated list per category. Use a compact pager row (⏪ 1 2 3 4 5 ⏩), one video
+button per row, a 10-video preview album per page, and duplicate page controls
+under each preview so I can change pages without scrolling up.</pre>
         </div>
 
-        <h3 class="project-subsection-title">6 — Upload error on Windows</h3>
+        <h3 class="project-subsection-title">5 — Sort categories by video count</h3>
         <div class="code-snippet">
-          <pre>I'm getting: TelegramBadRequest: invalid file HTTP URL specified:
-Wrong port number specified in the URL. Fix it.</pre>
+          <pre>In send_category_picker, order category buttons by video_count DESC so
+the biggest folders (e.g. zw) show up first.</pre>
         </div>
-        <p>
-          Fixed by uploading with <code>FSInputFile(path)</code> instead of passing a
-          Windows path string that Telegram misread as a URL.
-        </p>
 
-        <h3 class="project-subsection-title">7 — Double-click start script</h3>
+        <h3 class="project-subsection-title">6 — Add FSInputFile for fallback uploads</h3>
         <div class="code-snippet">
-          <pre>Make a .bat file I can double-click to start the bot on Windows.</pre>
+          <pre>On the download-and-reupload fallback path, send the video with
+FSInputFile(tmp_path) from aiogram instead of passing the path as a string to
+send_video (Windows paths were being parsed as bad HTTP URLs).</pre>
+        </div>
+
+        <h3 class="project-subsection-title">7 — Add start_bot.bat for Windows</h3>
+        <div class="code-snippet">
+          <pre>Add start_bot.bat and stop_bot.bat in the project root so I can
+double-click to run the bot from .venv on Windows.</pre>
         </div>
         <p>
           Added <code>start_bot.bat</code> and <code>stop_bot.bat</code> in the repo root.
