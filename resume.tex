@@ -1,0 +1,155 @@
+%-------------------------
+% Resume in LaTeX
+% Based on: https://github.com/sb2nov/resume (MIT License)
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+\definecolor{resumeblue}{RGB}{70, 130, 180}
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Junye Zhou} \\ \vspace{4pt}
+    \small\color{resumeblue}
+    \href{https://moonlitjaderabbit.github.io/website}{\underline{Portfolio (moonlitjaderabbit.github.io)}} $|$
+    \href{https://linkedin.com/in/junye-zhou-5ab895367}{\underline{linkedin.com/in/junye-zhou-5ab895367}} $|$
+    \href{mailto:junye.zhou@mail.utoronto.ca}{\underline{junye.zhou@mail.utoronto.ca}}
+    \color{black}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of Toronto}{Toronto, ON}
+      {Bachelor of Applied Science in Computer Engineering}{2025 -- 2030}
+      \resumeItemListStart
+        \resumeItem{Relevant coursework: CIV102 (structures), PHY180 (classical mechanics lab), Praxis I \& II (engineering design)}
+        \resumeItem{CIV102 matboard bridge ranked \textbf{\#1 in cohort}, \textbf{\#2 in EngSci Class of 2025}}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{CIV102 Matboard Bridge (Team 602)} $|$ \emph{Python, SolidWorks, OptiCutter}}{Nov 2026 -- Dec 2026}
+          \resumeItemListStart
+            \resumeItem{Designed and built a 1.25\,m matboard bridge for train loading; predicted failure load $\sim$954\,N after safety margin}
+            \resumeItem{Led hand calculations with teammates; contributed to Python structural analysis (\href{https://github.com/ATATC/CIV102-Bridge-Project}{GitHub})}
+            \resumeItem{Built and tested full-scale prototype; splice failure near 1000\,N drove four design iterations (diaphragms, splice reinforcement)}
+            \resumeItem{Team: Declan Chan, Junye Zhou, Navneet Saxena, Tianhao Fu}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{Zipline Variable Resistance System (Team 7)} $|$ \emph{Requirements, capstan design}}{Feb 2026 -- Apr 2026}
+          \resumeItemListStart
+            \resumeItem{Partner: Mississauga Aquatic Club (MSSAC); RFP focus on variable swim resistance for training}
+            \resumeItem{Developed capstan-based shuttle with 8 resistance levels (60--170\,N) and $\sim$3\,s adjustment time}
+            \resumeItem{Built requirement tables, material Pugh charts, and verification plans; presented at Praxis II showcase}
+            \resumeItem{Team: Grant Liang, Sean Ding, Nathan Xia, Junye Zhou}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{STL Robotics Community RFP (Team 7)} $|$ \emph{Stakeholder research, technical writing}}{Jan 2025 -- Feb 2025}
+          \resumeItemListStart
+            \resumeItem{Team RFP for St. Theresa of Lisieux VEX robotics (STL Robotics): collect loose parts from portable floors and sort metallic hardware for reuse}
+            \resumeItem{Conducted stakeholder interviews and portable-space measurements; framed safety and ergonomics requirements}
+            \resumeItem{Team: Grant Liang, Sean Ding, Nathan Xia, Junye Zhou}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{PHY180 Damped Pendulum Lab} $|$ \emph{OSP Tracker, Python, data analysis}}{Oct. 2025 -- Oct. 2025}
+          \resumeItemListStart
+            \resumeItem{Solo lab report: filmed pendulum at 60\,fps; tracked motion frame-by-frame in OSP Tracker}
+            \resumeItem{Analyzed period vs.\ angle, damping, length scaling, and $Q$ vs.\ length; $Q \approx 109$ (two methods agreed)}
+            \resumeItem{Documented uncertainty sources and compared results to course theory}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{ Bed Dome Cover Design Report} $|$ \emph{Proxy testing, Pugh analysis}}{Sept 2025 -- Dec 2025}
+          \resumeItemListStart
+            \resumeItem{Alpha Release design for conflicting sleep/study lighting in UofT Chestnut Residence double rooms}
+            \resumeItem{Diverged on four concepts; ran proxy illuminance tests in a real dorm; converged with Pugh charts}
+            \resumeItem{Recommended foldable bed dome cover targeting $<$1\,lux at the sleeper's eyes}
+            \resumeItem{Team: Jiaxu Zhao, Junye Zhou, Jocelyn Li, Audrey Lin}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, Java, C} \\
+     \textbf{Engineering tools}{: SolidWorks, OSP Tracker, OptiCutter} \\
+     \textbf{Design methods}{: Requirements (NGO), Pugh matrices, proxy testing, stakeholder interviews, concept selection} \\
+    }}
+ \end{itemize}
+
+\end{document}
